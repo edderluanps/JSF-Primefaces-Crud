@@ -15,10 +15,43 @@
             justify-content: center;
             flex-direction: column;
         }
+        
     </style>
     <h:form>
         <p:messages showDetail="true" ></p:messages>
         <p:fieldset legend="Lista">
+
+            <p:toolbar>
+                <p:toolbarGroup>
+                    <p:commandButton value="novo" action="#{ub.novo()}" update="@form"></p:commandButton>
+                    <p:commandButton value="salvar" action="#{ub.salvar()}" disabled="#{ub.search == true}" update="@form"></p:commandButton>
+                    <p:commandButton value="buscar" action="#{ub.read()}" update="@form"></p:commandButton> 
+                </p:toolbarGroup>
+            </p:toolbar>
+            
+            <p:panelGrid columns="2" rendered="#{ub.search == false}">
+                <h:outputLabel value="Nome"> </h:outputLabel>
+                <p:inputText value="#{ub.entity.nome}"></p:inputText>
+
+                <h:outputLabel value="CPF"> </h:outputLabel>
+                <p:inputMask mask="999.999.999-99" value="#{ub.entity.cpf}"></p:inputMask>
+            </p:panelGrid>
+            
+            <p:dataTable value="#{ub.entities}" var="user" rendered="#{ub.search == true}"> 
+                <p:column>
+                    <p:commandButton value="editar" action="#{ub.editar(user)}" update="@form"></p:commandButton> 
+                </p:column>
+                <p:column>
+                    <p:commandButton value="deletar" action="#{ub.deletar(user)}" update="@form"></p:commandButton> 
+                </p:column>
+               
+                <p:column headerText="Nome">
+                    <h:outputText value="#{user.nome}"></h:outputText>
+                </p:column>
+                <p:column headerText="CPF" sortBy="#{user.cpf}">
+                    <h:outputText value="#{user.cpf}"></h:outputText>
+                </p:column>
+            </p:dataTable>
 
         </p:fieldset>
     </h:form>
