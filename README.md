@@ -13,3 +13,7 @@ Crud utilizando Java SeverFaces e o Framework frontend PrimeFaces. Repositório 
 2- Abra sua IDE, procure a opção de importar projeto, selecione o arquivo zip e importe o projeto para sua IDE.
 
 3- O projeto foi concluido com a versão 2.2 do Java ServerFaces e 10.0.0 do Primefaces, certifique-se das versões antes de compilar.
+
+
+## Docs
+1- https://www.primefaces.org/gettingstarted/
